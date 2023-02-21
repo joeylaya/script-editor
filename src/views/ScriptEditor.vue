@@ -1,0 +1,35 @@
+<script setup lang="ts">
+import PageHeader from '../components/PageHeader.vue';
+import Script from '../components/Script.vue';
+</script>
+
+<template>
+  <div class="page">
+    <PageHeader title="Script Editor" />
+    <main class="main">
+      <Script />
+    </main>
+  </div>
+</template>
+
+<style scoped>
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+@media screen and (max-width: 980px) {
+  .page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+</style>

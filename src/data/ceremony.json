@@ -1,0 +1,23 @@
+{
+  "id": "clc1auygyna390bmxgacjks61",
+  "name": "Eiusmod & Cupidatat",
+  "timeOfDay": "evening",
+  "spouses": [
+    {
+      "id": "clc1avuljn85f0amzqxtvib0s",
+      "firstName": "Eiusmod",
+      "lastName": "Veniam",
+      "pronounSeries": "he",
+      "ceremonialRole": "groom",
+      "partnershipTitle": "husband"
+    },
+    {
+      "id": "clc1avgk8n8380amz799w19jd",
+      "firstName": "Cupidatat",
+      "lastName": "Deserunt-mollit",
+      "pronounSeries": "they",
+      "ceremonialRole": "spouse",
+      "partnershipTitle": "partner"
+    }
+  ]
+}
