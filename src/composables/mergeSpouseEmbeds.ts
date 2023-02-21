@@ -5,6 +5,8 @@ export const mergeSpouseEmbeds = (
   type: "first" | "other",
   html: string
 ) => {
+  // spouse embeds are converted elsewhere into this pattern
+  // uses matchAll first to avoid iterating through unused embed variables
   const embeds = html.matchAll(
     new RegExp(`(?<=\{\{${type}:)(.+?)(?=\}\})`, "gi")
   );

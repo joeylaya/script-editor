@@ -15,6 +15,7 @@ export const renderSpouseEmbedBlock = (
 
   let mergedBlock = "";
 
+  // iterates through each spouse as the primary spouse with the others as secondary
   for (let i = 0; i < range; i++) {
     const firstSpouse = [spouses[i]];
     const otherSpouses = [...spouses.slice(0, i), ...spouses.slice(i + 1)];
