@@ -1,7 +1,7 @@
 # Wedding Ceremony Script Editor - Coding Sample
 
 ## Description
-This is a small excerpt of full-stack web application with custom components designed to be a ceremony script builder and editor.
+This is a small and simplified excerpt of a full-stack web application designed to be a ceremony script builder and editor.
 
 This features a WYSIWYG script editor that renders a script with merge fields **(decorated in bold)**. In reality, this retrieves the ceremony information from the current user's workspace and merges it with sample templates and their custom ceremony script on request.
 
@@ -13,6 +13,3 @@ These two files demonstrate my use of TypeScript and logic to merge the fields w
 These two files demonstrate my use of Vue.js (and some state management, CSS, and TypeScript).
 - **src\components\Script.vue**
 - **src\components\ScriptElement.vue**
-
-## Excerpt Limitations
-The excerpt has reduced funcionality and uses static data and Lorem Ipsum. For example, basic changes to the text areas are stored in state management and reset on refresh.
