@@ -7,9 +7,15 @@ This features a WYSIWYG script editor that renders a script with merge fields **
 
 ## Highlights
 These two files demonstrate my use of TypeScript and logic to merge the fields with information on the spouses. My goal was to make the app as inclusive as possible by enabling users to choose the pronouns and other language to describe each spouse and add more than two spouses. In addition to converting merge fields, there is added logic to repeat "blocks" with a specific class. This ensures that the algorithm will work for any number of spouses with any variety of pronouns, titles, etc.
-- **src\composables\renderSpouseEmbedBlock.ts**
-- **src\composables\mergeSpouseEmbeds.ts**
+- [src\composables\renderSpouseEmbedBlock.ts](https://github.com/joeylaya/script-editor/blob/main/src/composables/renderSpouseEmbedBlock.ts)
+- [src\composables\mergeSpouseEmbeds.ts](
+https://github.com/joeylaya/script-editor/blob/main/src/composables/mergeSpouseEmbeds.ts)
 
 These two files demonstrate my use of Vue.js (and some state management, CSS, and TypeScript).
-- **src\components\Script.vue**
-- **src\components\ScriptElement.vue**
+- [src\components\Script.vue](https://github.com/joeylaya/script-editor/blob/main/src/components/Script.vue)
+- [src\components\ScriptElement.vue](https://github.com/joeylaya/script-editor/blob/main/src/components/ScriptElement.vue)
+
+
+
+
+
