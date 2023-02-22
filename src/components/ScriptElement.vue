@@ -29,14 +29,7 @@ const stateStore = useStore()
 stateStore.toggleElementExpansion(expandButton.id)
 
 const isExpanded = computed(() => {
-  const index = stateStore.expandedElements.findIndex(
-    (e) => e === expandButton.id
-  )
-  if (index > -1) {
-    return true
-  } else {
-    return false
-  }
+  return stateStore.elementStates[expandButton.id]
 })
 
 const handleClick = () => {

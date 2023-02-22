@@ -1,21 +1,22 @@
 <script setup lang="ts">
+import { useStore } from '../stores/store';
 import BaseButton from './BaseButton.vue';
 
 const buttons: Button[] = [
-  {
-    id: 'saveButton',
-    variation: '1',
-    image: 'check',
-    type: 'emit',
-    text: 'Save'
-  },
-  {
-    id: 'reorderButton',
-    variation: '2',
-    image: 'reorder',
-    type: 'emit',
-    text: 'Reorder'
-  },
+  // {
+  //   id: 'saveButton',
+  //   variation: '1',
+  //   image: 'check',
+  //   type: 'emit',
+  //   text: 'Save'
+  // },
+  // {
+  //   id: 'reorderButton',
+  //   variation: '2',
+  //   image: 'reorder',
+  //   type: 'emit',
+  //   text: 'Reorder'
+  // },
   {
     id: 'expandAllButton',
     variation: '2',
@@ -26,12 +27,17 @@ const buttons: Button[] = [
   {
     id: 'collapseAllButton',
     variation: '2',
-    image: 'caretDown',
+    image: 'caretUp',
     type: 'emit',
     text: 'Collapse All'    
   }
 ]
 
+const stateStore = useStore()
+
+const handleClick = (id: string) => {
+  stateStore.handleToolbarSelection(id)
+}
 </script>
 
 <template>
@@ -40,6 +46,7 @@ const buttons: Button[] = [
       v-for="button of buttons"
       :key="button.id"
       :="button"
+      @clicked="handleClick"
     />
   </div>
 </template>

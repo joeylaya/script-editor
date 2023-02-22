@@ -25,14 +25,14 @@ const variation =
         ? 'btn-3'
         : 'btn-4'
 
-const emit = defineEmits(['click'])
+const emit = defineEmits(['clicked'])
 
 const handleClick = (event: Event) => {
   event.preventDefault()
 
   switch (props.type) {
     case 'emit':
-      emit('click', props.id)
+      emit('clicked', props.id)
       break;
     case 'router':
       useRouter().push(props.target!)
