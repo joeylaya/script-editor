@@ -123,7 +123,7 @@ const handleClick = (event: Event) => {
 }
 
 .btn-2 .icon svg * {
-  fill: #F2E1D9;
+  fill: #F5F5F5
 }
 
 /* btn-2 hover */
@@ -133,11 +133,11 @@ const handleClick = (event: Event) => {
 }
 
 .btn-2:hover .icon {
-  background: #CC8866;
+  background: #AC6039;
 }
 
 .btn-2:hover .icon svg * {
-  fill: #83401F;
+  fill: #F2E1D9;
 }
 
 /* btn-3 */
