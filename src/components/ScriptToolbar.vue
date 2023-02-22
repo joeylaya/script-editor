@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import BaseButton from './BaseButton.vue';
 
-
 const buttons: Button[] = [
   {
     id: 'saveButton',
@@ -48,7 +47,14 @@ const buttons: Button[] = [
 <style>
 .script-toolbar {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
-  gap: 16px;
+  gap: 12px;
+}
+
+@media screen and (max-width: 980px) {
+  .script-toolbar {
+    gap: 8px;
+  }
 }
 </style>

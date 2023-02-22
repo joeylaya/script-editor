@@ -23,9 +23,15 @@ const svg = await getSvg.text()
   border-radius: 36px;
 }
 
-.image {
+.icon,
+.icon svg {
+  transition: all 0.5s ease;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.icon svg * {
+  transition: all 0.125s ease;
 }
 </style>

@@ -25,6 +25,7 @@ import ScriptToolbar from '../components/ScriptToolbar.vue';
   display: flex;
   flex-direction: column;
   align-items: start;
+  gap: 16px;
 }
 
 @media screen and (max-width: 980px) {
@@ -32,6 +33,10 @@ import ScriptToolbar from '../components/ScriptToolbar.vue';
     display: flex;
     flex-direction: column;
     gap: 24px;
+  }
+
+  .main {
+    gap: 12px;
   }
 }
 </style>
