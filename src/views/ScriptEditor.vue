@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import PageHeader from '../components/PageHeader.vue';
 import Script from '../components/Script.vue';
+import ScriptToolbar from '../components/ScriptToolbar.vue';
 </script>
 
 <template>
   <div class="page">
     <PageHeader title="Script Editor" />
     <main class="main">
+      <ScriptToolbar />
       <Script />
     </main>
   </div>
