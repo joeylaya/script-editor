@@ -28,6 +28,7 @@ type IconImage =
 
 type ButtonType = "emit" | "router" | "url";
 type ActionType = "edit" | "duplicate" | "replace" | "delete";
+type CaseType = "sentence" | "pascal" | "camel" | "kebab"
 
 type PronounSeries = "they" | "she" | "he";
 type CeremonialRole = "spouse" | "bride" | "groom";
@@ -53,6 +54,11 @@ interface Button {
   type: ButtonType;
   text?: string;
   target?: string;
+}
+
+interface Actionbar {
+  id: string;
+  actions: ActionType[];
 }
 
 interface ScriptElementDto {
