@@ -4,7 +4,7 @@ const props: Icon = defineProps<{
   image: IconImage
 }>()
 
-const getSvg = await fetch(`src/assets/icons/${props.image}.svg?raw`)
+const getSvg = await fetch(`/icons/${props.image}.svg?raw`)
 const svg = await getSvg.text()
 </script>
 
