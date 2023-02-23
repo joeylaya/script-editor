@@ -2,8 +2,9 @@ import { defineStore } from "pinia";
 
 export const useStore = defineStore("store", {
   state: () => ({
+    script: Object() as Script,
     elementStates: Object() as Record<string, boolean>,
-    script: Object() as Script
+    isReordering: Boolean()
   }),
 
   actions: {
@@ -20,12 +21,6 @@ export const useStore = defineStore("store", {
 
     handleToolbarSelection(id: string) {
       switch (id) {
-        case 'saveButton':
-          
-          break;
-        case 'reorderButton':
-          
-          break;
         case 'expandAllButton':
           for (const elementId in this.elementStates) {
             this.elementStates[elementId] = true
