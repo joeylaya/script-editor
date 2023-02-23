@@ -1,6 +1,6 @@
 import data from "../data/script.json";
 import { convertToHtmlString } from "./convertToHtmlString";
-import { convertToSentenceCase } from "./convertToSentenceCase";
+import { convertCase } from "./convertCase";
 
 export const getScript = (ceremony: Ceremony) => {
   const scriptElementDtos = data.elements as ScriptElementDto[];
@@ -18,7 +18,7 @@ export const getScript = (ceremony: Ceremony) => {
       return {
         id,
         name,
-        type: convertToSentenceCase(type),
+        type: convertCase(type, "sentence"),
         html,
       };
     }
