@@ -1,36 +1,72 @@
 import { defineStore } from "pinia";
+import { toRaw } from "vue";
 
 export const useStore = defineStore("store", {
   state: () => ({
     script: Object() as Script,
-    elementStates: Object() as Record<string, boolean>,
+    expandedEditors: Object() as Record<string, boolean>,
+    expandedActionbar: String() || null,
     isReordering: Boolean()
   }),
 
   actions: {
     generateElementStates() {
-      this.elementStates = {}
+      this.expandedEditors = {}
       for (const element of this.script.elements) {
-        this.elementStates[element.id] = true
+        this.expandedEditors[element.id] = true
       }
     },
 
-    toggleElementExpansion(id: string) {
-      this.elementStates[id] = !this.elementStates[id]
+    toggleEditorExpansion(id: string) {
+      this.expandedEditors[id] = !this.expandedEditors[id]
+    },
+
+    toggleActionbarExpansion(id: string) {
+      if (this.expandedActionbar === id) {
+        this.expandedActionbar = null
+      } else {
+        this.expandedActionbar = id
+      }
+    },
+
+    handleActionbarSelection(id: string) {
+      const ids = id.split("-")
+      const elementId = ids[0].match(/\S*(?=Actionbar)/g)![0]
+      const buttonId = ids[1]
+
+      const elementIndex = this.script.elements.findIndex((element) => {
+        return element.id === elementId
+      })
+
+      switch (buttonId) {
+        case 'toggleButton':
+          this.toggleActionbarExpansion(elementId)
+          return;
+        case 'duplicateButton':
+          const elementCopy = structuredClone(toRaw(this.script.elements[elementIndex]))
+          elementCopy.id = elementCopy.id + Date.now()
+          
+          this.script.elements.splice(elementIndex + 1, 0, elementCopy)
+          this.expandedEditors[elementCopy.id] = false
+          break;
+        case 'deleteButton':
+          this.script.elements.splice(elementIndex, 1)
+      }
+
+      this.toggleActionbarExpansion(elementId)
     },
 
     handleToolbarSelection(id: string) {
       switch (id) {
         case 'expandAllButton':
-          for (const elementId in this.elementStates) {
-            this.elementStates[elementId] = true
+          for (const elementId in this.expandedEditors) {
+            this.expandedEditors[elementId] = true
           }          
           break;
         case 'collapseAllButton':
-          for (const elementId in this.elementStates) {
-            this.elementStates[elementId] = false
+          for (const elementId in this.expandedEditors) {
+            this.expandedEditors[elementId] = false
           }
-          break;
       }
     }
   },

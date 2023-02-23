@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { convertCase } from '../composables/convertCase'
+import { computed } from 'vue';
+import { useStore } from '../stores/store';
 import BaseButton from './BaseButton.vue';
 
 const props: Actionbar = defineProps<{
@@ -8,31 +9,49 @@ const props: Actionbar = defineProps<{
 }>()
 
 const toggleButton: Button = {
-  id: `${props.id}ToggleButton`,
+  id: `${props.id}-toggleButton`,
   variation: '4',
-  image: 'caretRight',
+  image: 'options',
   type: 'emit'
 }
 
 const actionButtons: Button[] = []
 for (const action of props.actions) {
   actionButtons.push({
-    id: `${props.id}${convertCase(action, 'pascal')}Button`,
+    id: `${props.id}-${action}Button`,
     variation: '4',
     image: action,
     type: 'emit'
   })
 }
+
+const elementId = props.id.match(/\S*(?=Actionbar)/g)![0]
+const stateStore = useStore()
+
+const isExpanded = computed(() => {
+  return stateStore.expandedActionbar === elementId
+})
+
+const handleClick = (id: string) => {
+  stateStore.handleActionbarSelection(id)
+}
 </script>
 
 <template>
-  <div class="actionbar shadow">
-    <BaseButton :="toggleButton" />
-    <div class="actions">
+  <div
+    class="actionbar"
+    :class="`${isExpanded ? 'actionbar-expanded shadow' : ''}`"
+  >
+    <BaseButton
+      :="toggleButton"
+      @clicked="handleClick"
+    />
+    <div v-if="isExpanded" class="actions">
       <BaseButton
         v-for="actionButton of actionButtons"
         :key="actionButton.id"
         :="actionButton"
+        @clicked="handleClick"
       />
     </div>
   </div>
@@ -40,14 +59,11 @@ for (const action of props.actions) {
 
 <style>
 .actionbar {
-  position: absolute;
-  top: 8px;
-  right: 8px;
   display: flex;
   flex-direction: row-reverse;
   padding: 6px 8px;
   gap: 6px;
-  border-radius: 18px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, .9);
 }
 
@@ -67,19 +83,23 @@ for (const action of props.actions) {
   height: 16px;
 }
 
-.actionbar > .btn .icon {
+.actionbar>.btn .icon svg * {
+  fill: #A3A3A3;
+}
+
+.actionbar.actionbar-expanded>.btn .icon {
   background: #F2E1D9;
 }
 
-.actionbar > .btn .icon svg * {
+.actionbar.actionbar-expanded>.btn .icon svg * {
   fill: #CC8866;
 }
 
-.actionbar > .btn .icon:hover {
+.actionbar>.btn .icon:hover {
   background: #D9A68C;
 }
 
-.actionbar > .btn .icon:hover svg * {
+.actionbar>.btn .icon:hover svg * {
   fill: #AC6039;
 }
 
@@ -101,11 +121,9 @@ for (const action of props.actions) {
 
 @media screen and (max-width: 980px) {
   .actionbar {
-    top: 6px;
-    right: 6px;
     padding: 4px 6px;
     gap: 4px;
-    border-radius: 16px;
+    border-radius: 8px;
   }
 
   .actions {
@@ -121,7 +139,5 @@ for (const action of props.actions) {
     width: 12px;
     height: 12px;
   }
-
-
 }
 </style>
