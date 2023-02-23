@@ -5,13 +5,14 @@ import { getScript } from '../composables/getScript'
 import { useStore } from '../stores/store';
 import { storeToRefs } from 'pinia';
 
-const store = useStore()
-const { script: reactiveScript } = storeToRefs(store)
-
 const ceremony = getCeremony()
 const script = getScript(ceremony)
 
+const store = useStore()
+const { script: reactiveScript } = storeToRefs(store)
+
 reactiveScript.value = script
+store.generateElementStates()
 
 const updateElement = async (richTextHtml: string, index: number) => {
   reactiveScript.value.elements[index].html = richTextHtml

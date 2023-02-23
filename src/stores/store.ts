@@ -2,29 +2,36 @@ import { defineStore } from "pinia";
 
 export const useStore = defineStore("store", {
   state: () => ({
-    expandedElements: Array(),
-    script: Object() as Script
+    script: Object() as Script,
+    elementStates: Object() as Record<string, boolean>,
+    isReordering: Boolean()
   }),
 
   actions: {
-    toggleElementExpansion(id: string) {
-      const index = this.expandedElements.findIndex((e) => e === id);
-      if (index > -1) {
-        const start = [...this.expandedElements.slice(0, index)]
-        const end = [...this.expandedElements.slice(index + 1)]
-
-        if (index === 0) {
-          this.expandedElements = end;
-        } else if (index === this.expandedElements.length - 1) {
-          this.expandedElements = start;
-        } else {
-          this.expandedElements = [...start, ...end];
-        }
-      } else {
-        this.expandedElements.push(id);
+    generateElementStates() {
+      this.elementStates = {}
+      for (const element of this.script.elements) {
+        this.elementStates[element.id] = true
       }
     },
 
+    toggleElementExpansion(id: string) {
+      this.elementStates[id] = !this.elementStates[id]
+    },
 
+    handleToolbarSelection(id: string) {
+      switch (id) {
+        case 'expandAllButton':
+          for (const elementId in this.elementStates) {
+            this.elementStates[elementId] = true
+          }          
+          break;
+        case 'collapseAllButton':
+          for (const elementId in this.elementStates) {
+            this.elementStates[elementId] = false
+          }
+          break;
+      }
+    }
   },
 });
