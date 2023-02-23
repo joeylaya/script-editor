@@ -15,6 +15,7 @@ These two files demonstrate my use of Vue.js (and some state management, CSS, an
 - [src\components\Script.vue](https://github.com/joeylaya/script-editor/blob/main/src/components/Script.vue)
 - [src\components\ScriptElement.vue](https://github.com/joeylaya/script-editor/blob/main/src/components/ScriptElement.vue)
 
+✨ [VIEW LIVE](https://script-editor.netlify.app/script)
 
 
 
