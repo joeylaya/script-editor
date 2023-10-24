@@ -1,5 +1,4 @@
-# Full app is live at [app.wedwordy.com](https://app.wedwordy.com)!
-# View the website at [wedwordy.com](https://wedwordy.com)!
+# ✨ Full app is live at [app.wedwordy.com](https://app.wedwordy.com)! View the website at [wedwordy.com](https://wedwordy.com).
 
 ## Description
 This is a small and simplified excerpt of a full-stack web application designed to be a ceremony script builder and editor.
@@ -15,9 +14,3 @@ https://github.com/joeylaya/script-editor/blob/main/src/composables/mergeSpouseE
 These two files demonstrate my use of Vue.js (and some state management, CSS, and TypeScript).
 - [src\components\Script.vue](https://github.com/joeylaya/script-editor/blob/main/src/components/Script.vue)
 - [src\components\ScriptElement.vue](https://github.com/joeylaya/script-editor/blob/main/src/components/ScriptElement.vue)
-
-✨ [VIEW LIVE](https://script-editor.netlify.app/script)
-
-
-
-
