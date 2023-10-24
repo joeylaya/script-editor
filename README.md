@@ -1,4 +1,5 @@
-# Wedding Ceremony Script Editor - Coding Sample
+# Full app is live at [app.wedwordy.com](https://app.wedwordy.com)!
+# View the website at [wedwordy.com](https://wedwordy.com)!
 
 ## Description
 This is a small and simplified excerpt of a full-stack web application designed to be a ceremony script builder and editor.
